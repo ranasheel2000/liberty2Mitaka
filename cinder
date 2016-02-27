@@ -1,0 +1,7 @@
+1. #1531400 Creating volume_types, CGs, encryption-type, backup, QoS with unicode name fails with 500 error
+2. #1538418 image-metadata with case sensitive has problem when deleting
+3. #1542413 Unable to use 4-bytes unicode when creating volume, volume_type, CG, etc
+4. #1540212 cinder client have not exposed support for availability_zone parameter
+5. pagination to volume list 
+6. #1158328 passwords in config files stored in plaintext
+7. 
