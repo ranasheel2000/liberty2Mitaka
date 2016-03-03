@@ -1,1 +1,3 @@
-https://blueprints.launchpad.net/nova/+spec/v3-api-schema
+Security Group schema validation:
+    reference : https://blueprints.launchpad.net/nova/+spec/v3-api-schema
+    task      : https://bugs.launchpad.net/nova/+bug/1545729
