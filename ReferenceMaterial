@@ -1,0 +1,14 @@
+1. https://etherpad.openstack.org/p/cinder_todo
+2. https://etherpad.openstack.org/p/cinder-nova-api-changes
+
+
+
+https://github.com/openstack/cinder/blob/master/HACKING.rst
+http://docs.openstack.org/developer/hacking/
+https://git.openstack.org/cgit/openstack/
+https://specs.openstack.org/openstack/cinder-specs/specs/liberty/scalable-backup-service.html
+https://github.com/openstack/cinder/blob/master/cinder/i18n.py
+
+
+
+https://docs.python.org/2/howto/regex.html
