@@ -1,7 +1,18 @@
 1. https://etherpad.openstack.org/p/cinder_todo
 2. https://etherpad.openstack.org/p/cinder-nova-api-changes
 
+Reading Tasks:
+1. https://specs.openstack.org/openstack/cinder-specs/specs/liberty/scalable-backup-service.html
 
+Reading Material:
+1. https://docs.python.org/3/tutorial/index.html
+2. https://docs.python.org/3/library/index.html
+4. https://docs.python.org/3/howto/index.html
+5. python porting from2to3: https://docs.python.org/2/howto/pyporting.html
+6. https://docs.python.org/2/howto/index.html
+7. Regex: https://docs.python.org/2/howto/regex.html
+
+Note: reference for python : https://docs.python.org/3/
 
 https://github.com/openstack/cinder/blob/master/HACKING.rst
 http://docs.openstack.org/developer/hacking/
