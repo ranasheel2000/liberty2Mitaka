@@ -1,0 +1,167 @@
+
+*******************************CINDER-API****************************************
+
+************************###################**********************
+cinder/api/contrib/backups.py
+class BackupController(wsgi.Controller)
+def create(self, req,body)
+>>body validation
+>>new_backup=self.backup_api.create()
+>>return new_backup
+
+************************#################***********************
+cinder/backup/api.py
+class API(base.Base)
+def create(ctxt,name,volume_id,description,incremantal=false)
+>> Get volume information
+  volume=self.volume_api.get(context,volume_id) => Database Query
+  check volume status if volume_status!=available exception will be raised
+
+>>check if backup service enabled
+volume_host = volume_utils.extract_host(volume['host'], 'host')
+##host=localhost.localdomain@lvm#LVM for cinder-volume
+##host=localhost.localdomain
+##volume_host=localhost.localdomain (it is extracted from volume_utils.extracthost(host))
+self._is_backup_service_enabled(volume,volume_host) => DB Query for cinder services table to check cinder services
+are enabled or not, it checks for cinder-backup availibility zone and 
+
+>># do quota reserver before setting volume status and backup status
+reserve_opts = {'backups': 1,'backup_gigabytes': volume['size']}
+reservations = QUOTAS.reserve(context, **reserve_opts)
+	##QUOTAS = quota.QUOTAS (cinder.quota.py QUOTAS=VolumeTypeQuotaEngine())
+class VolumeTypeQuotaEngine(QuotaEngine):
+	def reserve(self, context, expire=None, project_id=None, **deltas):
+	reservations = self._driver.reserve(context, self.resources, deltas,expire=expire,project_id=project_id)    
+	## self._driver = quota_driver_class
+        ## quota_driver_class = CONF.quota_driver
+        ## cfg.StrOpt('quota_driver',default='cinder.quota.DbQuotaDriver',help='Default driver to use for quota checks')
+
+class DbQuotaDriver(object):
+def reserve(self, context, resources, deltas, expire=None,project_id=None):
+quotas = self._get_quotas(context, resources, deltas.keys(),has_sync=True, project_id=project_id)
+	def _get_quotas(self, context, resources, keys, has_sync, project_id=None,parent_project_id=None):
+	quotas = self.get_project_quotas(context, sub_resources,project_id,context.quota_class,usages=False,parent_project_id=parent_project_id)
+        	def get_project_quotas():
+		project_quotas = db.quota_get_all_by_project(context, project_id)
+		class_quotas = db.quota_class_get_all_by_name(context, quota_class)
+ return db.quota_reserve(context, resources, quotas, deltas, expire,CONF.until_refresh, CONF.max_age,project_id=project_id)
+
+>># update volume status
+self.db.volume_update(context, volume_id,{'status': 'backing-up','previous_status': previous_status})  
+backup = objects.Backup(context=context, **kwargs)
+backup.create()
+QUOTAS.commit(context, reservations)
+self.backup_rpcapi.create_backup(context, backup)
+return backup
+
+**********************************#########################*********************
+cinder/backup/rpcapi.py
+class BackupAPI(object)
+def create_backup()
+>>RabbitMq message create backup from CINDER-API->CINDER-BACKUP
+
+
+
+****************************************CINDER-BACKUP*****************************************************
+cinder/backup/manager.py
+class BackupManager(manager.SchedulerDependentManager)
+def create_backup(self,context,backup)
+>>get volume info
+self.db.volume_get(context,volume_id)=>Database Query
+volume_host=volume_utils.extract_host(volume['host'], 'host') ##localhost.localdomain@lvm
+
+>>get backend and backup service info
+backend = self._get_volume_backend(host=volume_host) ##it will return "lvm" by parttioning volume_host
+backup.host = self.host
+backup.service = self.driver_name
+backup.save()      #database update
+
+>>initiliaze drivers
+utils.require_driver_initialized(self.driver) ##It checks LVM is initialzed or not
+backup_service = self.service.get_backup_driver(context) 
+##It initiliazes swift and chunk driver ##It will return object of SwiftBackupDriver(chunkeddriver.ChunkedBackupDriver) in cinder/backup/drivers/swift.py
+##self.service=cinder.backup.services.swift': 'cinder.backup.drivers.swift ##services mapped to driver
+self._get_driver(backend).backup_volume(context, backup,backup_service) ##cinder/volume/drivers/lvm.py
+                                                    
+>>in backend driver LVM
+cinder/volume/drivers/lvm.py
+>>get volume info 
+volume = self.db.volume_get(context, backup.volume_id)
+volume_path = self.local_path(volume)
+with utils.temporary_chown(volume_path):  ##chown on /dev/mapper/volume
+with fileutils.file_open(volume_path) as volume_file: ## it opens the volume as a file in rb(read+binary) mode
+backup_service.backup(backup, volume_file)   ##it calls the parent class method
+
+>>in chunkdriver
+cinder/backup/chunkeddriver.py 
+ChunkedBackupDriver(driver.BackupDriver):
+def backup(self, backup, volume_file, backup_metadata=True):
+(object_meta, object_sha256, extra_metadata, container,volume_size_bytes) = self._prepare_backup(backup)
+	def _prepare_backup(self, backup):
+	volume = self.db.volume_get(self.context, backup.volume_id)
+	container = self._create_container(self.context, backup) ###if backup.container is none it use default container, and create it 
+	
+      ### first call to swift 
+        object_prefix = self._generate_object_name_prefix(backup)
+        backup.service_metadata = object_prefix
+        backup.save()   ###database write
+
+while True:
+ backup = objects.Backup.get_by_id(self.context, backup.id)##db query
+ data_offset = volume_file.tell() ##Return the current stream position
+ data = volume_file.read(self.chunk_size_bytes)
+ if data == b'':
+                break
+# Calculate new shas with the datablock.
+self._backup_chunk(backup, container, data, data_offset, object_meta, extra_metadata)
+algorithm, output_data = self._prepare_output_data(data)
+with self.get_object_writer(
+                container, object_name, extra_metadata=extra_metadata
+        ) as writer:
+            writer.write(output_data)
+
+
+
+
+
+
+>>Intiliaze swift
+cinder/backup/drivers/swift.py
+cinder/volume/drivers/lvm.py 
+backup_volume
+
+
+
+MC point
+def backup
+def _prepare_backup
+def _create_container ->put_container(abstract method) implented by backup driver in this case swift
+
+cinder/backup/drivers/swift.py
+put_container implemented here it calls to swift client 
+
+then it comes back again to _prepare_backup
+cinder/backup/chunkeddriver.py
+def _backup_chunk
+************************************end*********************
+
+
+create backup started
+checking host name localhost.localadmin@lvm  _get_volume_backend()
+got backend lvm _get_volume_backend()
+Driver requested for volume backend _get_driver
+fetching default backend _get_driver
+backend not found in host name so fetching default backend
+manger requested for volume backend _get_manger
+swift
+driver requested for volume backend _get_driver
+manager requested for volume_backend lvm _get_manger
+SQL session
+chown
+
+
+
+
+
+
+
