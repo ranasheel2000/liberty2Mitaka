@@ -11,6 +11,7 @@ Reading Material:
 5. python porting from2to3: https://docs.python.org/2/howto/pyporting.html
 6. https://docs.python.org/2/howto/index.html
 7. Regex: https://docs.python.org/2/howto/regex.html
+8. MOCK - https://docs.python.org/3/library/unittest.mock.html
 
 Note: reference for python : https://docs.python.org/3/
 
