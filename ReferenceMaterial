@@ -12,7 +12,7 @@ Reading Material:
 6. https://docs.python.org/2/howto/index.html
 7. Regex: https://docs.python.org/2/howto/regex.html
 8. MOCK - https://docs.python.org/3/library/unittest.mock.html
-
+9. https://docs.python.org/3/library/development.html
 Note: reference for python : https://docs.python.org/3/
 
 https://github.com/openstack/cinder/blob/master/HACKING.rst
