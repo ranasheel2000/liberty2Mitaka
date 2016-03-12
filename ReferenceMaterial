@@ -21,6 +21,8 @@ https://git.openstack.org/cgit/openstack/
 https://specs.openstack.org/openstack/cinder-specs/specs/liberty/scalable-backup-service.html
 https://github.com/openstack/cinder/blob/master/cinder/i18n.py
 
+How to Add Gate jobs:
+https://review.openstack.org/#/c/287115/7
 
 
 https://docs.python.org/2/howto/regex.html
