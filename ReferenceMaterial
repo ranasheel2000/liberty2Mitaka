@@ -1,5 +1,6 @@
 1. https://etherpad.openstack.org/p/cinder_todo
 2. https://etherpad.openstack.org/p/cinder-nova-api-changes
+3. https://blueprints.launchpad.net/glance/+spec/sighup-conf-reload
 
 Reading Tasks:
 1. https://specs.openstack.org/openstack/cinder-specs/specs/liberty/scalable-backup-service.html
