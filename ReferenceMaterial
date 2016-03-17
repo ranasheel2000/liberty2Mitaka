@@ -29,4 +29,5 @@ https://review.openstack.org/#/c/287115/7
 
 https://docs.python.org/2/howto/regex.html
 
-osprofiler: https://etherpad.openstack.org/p/osprofiler_how_to_dec_2015
+1. osprofiler: https://etherpad.openstack.org/p/osprofiler_how_to_dec_2015
+2. Multi backup node configurations: https://review.openstack.org/#/c/293331/1
