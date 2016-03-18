@@ -1,3 +1,19 @@
 Security Group schema validation:
     reference : https://blueprints.launchpad.net/nova/+spec/v3-api-schema
     task      : https://bugs.launchpad.net/nova/+bug/1545729
+    
+    
+http://stackalytics.com/report/blueprint/nova/v3-api-schema
+https://etherpad.openstack.org/p/nova-v3-api-validation
+https://blueprints.launchpad.net/nova/+spec/v3-api-schema
+https://review.openstack.org/#/q/topic:bp/v3-api-schema,n,z
+
+https://github.com/openstack/nova/blob/master/nova/api/openstack/compute/schemas/volumes.py
+https://github.com/openstack/nova/blob/master/nova/api/openstack/compute/schemas/security_groups.py
+
+
+
+
+Launchpad stats
+https://pypi.python.org/pypi/launchpadstats/0.2.1
+https://github.com/mkollaro/launchpadstats
