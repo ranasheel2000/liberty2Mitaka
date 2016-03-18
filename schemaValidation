@@ -17,3 +17,4 @@ https://github.com/openstack/nova/blob/master/nova/api/openstack/compute/schemas
 Launchpad stats
 https://pypi.python.org/pypi/launchpadstats/0.2.1
 https://github.com/mkollaro/launchpadstats
+http://stackalytics.readthedocs.org/en/latest/userdoc/api_v1.0.html#contribution-by-companies
