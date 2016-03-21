@@ -5,4 +5,4 @@
 5. pagination to volume list 
 6. #1158328 passwords in config files stored in plaintext
 7. #1520077 Show capabilities for storage backends returns 500
-8. 
+8. #1504007 Unmanaging vol/snap reduces quota incorrectly - Change-Id: I5c4169fa6a31d2951851bd3eb44d849f2c7eeed5
