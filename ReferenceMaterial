@@ -8,6 +8,9 @@ Reading Tasks:
 3. Thin provisioning: 
     http://www.tecmint.com/setup-thin-provisioning-volumes-in-lvm/
     https://github.com/openstack/cinder-specs/blob/master/specs/kilo/over-subscription-in-thin-provisioning.rst
+4. summary message:
+   zaqar WIP: https://review.openstack.org/#/c/271475/1
+   https://review.openstack.org/#/c/29227/
 
 Reading Material:
 1. https://docs.python.org/3/tutorial/index.html
