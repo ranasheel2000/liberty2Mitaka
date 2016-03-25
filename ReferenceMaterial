@@ -63,3 +63,6 @@ curl  -H "X-Auth-Token:a983cd943e7f4017b1c88e097a216899"  -h http://10.0.2.15:87
 DELETE /v2/f270b245cb11498ca4031deb7e141cfa/types/898016e6-038e-4ae7-baad-2f07b4404567/encryption/provider
 SHEEL action_Args={'project_id': u'f270b245cb11498ca4031deb7e141cfa', 'id': u'provider', 'type_id': u'898016e6-038e-4ae7-baad-2f07b4404567'}
 
+Future Targets
+
+1. https://review.openstack.org/#/c/263104/1
