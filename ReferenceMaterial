@@ -12,6 +12,7 @@ Reading Tasks:
    zaqar WIP: https://review.openstack.org/#/c/271475/1
    https://review.openstack.org/#/c/29227/
    https://blueprints.launchpad.net/manila/+spec/user-messages
+   https://review.openstack.org/#/c/200269/20
 5. Retry in rabbitMQ
    https://review.openstack.org/#/c/274148/1
 6. Experimental API
