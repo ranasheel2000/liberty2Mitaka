@@ -11,6 +11,7 @@ Reading Tasks:
 4. summary message:
    zaqar WIP: https://review.openstack.org/#/c/271475/1
    https://review.openstack.org/#/c/29227/
+   https://blueprints.launchpad.net/manila/+spec/user-messages
 
 Reading Material:
 1. https://docs.python.org/3/tutorial/index.html
@@ -37,3 +38,22 @@ https://docs.python.org/2/howto/regex.html
 
 1. osprofiler: https://etherpad.openstack.org/p/osprofiler_how_to_dec_2015
 2. Multi backup node configurations: https://review.openstack.org/#/c/293331/1
+
+
+cURL
+
+Encryption create
+
+Token
+curl -d '{"auth":{"tenantName": "admin", "passwordCredentials":{"username": "admin", "password": "abc1234"}}}' -H "Content-type: application/json"  http://10.0.2.15:35357/v2.0/tokens
+
+curl  -H "X-Auth-Token:a983cd943e7f4017b1c88e097a216899" -H "Content-type: application/json" http://10.0.2.15:8776/v2/f270b245cb11498ca4031deb7e141cfa/types/898016e6-038e-4ae7-baad-2f07b4404567/encryption -X POST -d '{"encryption": {"control_location": "front-end", "cipher": null, "key_size": null, "provider": "LuksEncryptor"}}'
+{"encryption": {"volume_type_id": "898016e6-038e-4ae7-baad-2f07b4404567", "key_size": null, "control_location": "front-end", "encryption_id": "905302fa-b6b4-40c7-a0c5-5057def39cc7", "cipher": null, "provider": "LuksEncryptor"}}root@sheel:/home/sheel/next/cinder# 
+
+
+Encryption Delete
+curl  -H "X-Auth-Token:a983cd943e7f4017b1c88e097a216899"  -h http://10.0.2.15:8776/v2/f270b245cb11498ca4031deb7e141cfa/types/898016e6-038e-4ae7-baad-2f07b4404567/encryption -X DELETE 
+
+DELETE /v2/f270b245cb11498ca4031deb7e141cfa/types/898016e6-038e-4ae7-baad-2f07b4404567/encryption/provider
+SHEEL action_Args={'project_id': u'f270b245cb11498ca4031deb7e141cfa', 'id': u'provider', 'type_id': u'898016e6-038e-4ae7-baad-2f07b4404567'}
+
