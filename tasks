@@ -1,3 +1,10 @@
 1. https://specs.openstack.org/openstack/cinder-specs/specs/liberty/scalable-backup-service.html
 
 2. multiple glance client connections :  https://bugs.launchpad.net/cinder/+bug/1571211
+
+3. openstack Client implementations : 
+   this is performed by cliff, and implements the Demeraou-Levenshtein algorithm to find matches. 
+   see commit https://github.com/openstack/cliff/commit/3396764571f5e18f99a63f1f1160a0a6a1b3097a for additional details.
+   I suspect "role' is matching with router and volume since 3 out of 4 letters match (r, o ,e with router and o, l, e with volume) in order.
+   The `openstack create` case won't bring up all the `create` results since our implementation only matches the object/noun, 
+   not the verb (which is why it's brining up aggregate (r, e, t, e from create)
