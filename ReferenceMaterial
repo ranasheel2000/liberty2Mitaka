@@ -46,6 +46,13 @@ https://docs.python.org/2/howto/regex.html
 1. osprofiler: https://etherpad.openstack.org/p/osprofiler_how_to_dec_2015
 2. Multi backup node configurations: https://review.openstack.org/#/c/293331/1
 
+OS-Brick
+https://github.com/openstack/cinder-specs/blob/master/specs/mitaka/use-cinder-without-nova.rst
+
+os-brick Review Inbox : https://review.openstack.org/#/dashboard/?foreach=project:%5Eopenstack/.*python-brick-cinderclient-ext.*%20status:open%20NOT%20owner:self%20NOT%20label:Workflow%3C=%252D1%20label:Verified%3E=1%20NOT%20label:Code%252DReview%3C=%252D1%252cself%20NOT%20label:Code%252DReview%3E=1%252cself&title=python-brick-cinderclient-ext%20Review%20Inbox&Cinder%20Specs=project:openstack/cinder%252Dspecs&Bug%20Fixes=topic:%5Ebug/.*&Needs%20Feedback%20(Changes%20older%20than%205%20days%20that%20have%20not%20been%20reviewed%20by%20anyone)=NOT%20label:Code%252DReview%3C=2%20age:5d&You%20are%20a%20reviewer%252c%20but%20haven't%20voted%20in%20the%20current%20revision=reviewer:self&Needs%20final%20+2=label:Code%252DReview%3E=2%20limit:50&New%20Contributors=reviewer:10068&Passed%20Jenkins%252c%20No%20Negative%20Feedback=NOT%20label:Code%252DReview%3E=2%20NOT%20label:Code%252DReview%3C=%252D1%20limit:50&Wayward%20Changes%20(Changes%20with%20no%20code%20review%20in%20the%20last%202days)=NOT%20label:Code%252DReview%3C=2%20age:2d
+https://review.openstack.org/#/dashboard/?foreach=project:%5Eopenstack/.*python-brick-cinderclient-ext.*%20status:open%20NOT%20owner:self%20NOT%20label:Workflow%3C=%252D1%20label:Verified%3E=1%20NOT%20label:Code%252DReview%3C=%252D1%252cself%20NOT%20label:Code%252DReview%3E=1%252cself&title=python-brick-cinderclient-ext%20Review%20Inbox&Cinder%20Specs=project:openstack/cinder%252Dspecs&Bug%20Fixes=topic:%5Ebug/.*&Needs%20Feedback%20(Changes%20older%20than%205%20days%20that%20have%20not%20been%20reviewed%20by%20anyone)=NOT%20label:Code%252DReview%3C=2%20age:5d&You%20are%20a%20reviewer%252c%20but%20haven't%20voted%20in%20the%20current%20revision=reviewer:self&Needs%20final%20+2=label:Code%252DReview%3E=2%20limit:50&New%20Contributors=reviewer:10068&Passed%20Jenkins%252c%20No%20Negative%20Feedback=NOT%20label:Code%252DReview%3E=2%20NOT%20label:Code%252DReview%3C=%252D1%20limit:50&Wayward%20Changes%20(Changes%20with%20no%20code%20review%20in%20the%20last%202days)=NOT%20label:Code%252DReview%3C=2%20age:2d
+http://docs.openstack.org/project-team-guide/stable-branches.html
+https://github.com/openstack/governance/blob/master/reference/projects.yaml#L197
 
 cURL
 
