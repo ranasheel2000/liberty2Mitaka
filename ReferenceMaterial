@@ -31,6 +31,15 @@ Reading Material:
 9. https://docs.python.org/3/library/development.html
 Note: reference for python : https://docs.python.org/3/
 
+
+Design Patterns:
+http://www.bogotobogo.com/DesignPatterns/introduction.php
+http://www.tutorialspoint.com/design_pattern/design_pattern_overview.htm
+Python Reference:
+http://www.bogotobogo.com/python/pytut.php
+http://www.dabeaz.com/
+https://www.youtube.com/watch?v=Z_OAlIhXziw
+
 https://github.com/openstack/cinder/blob/master/HACKING.rst
 http://docs.openstack.org/developer/hacking/
 https://git.openstack.org/cgit/openstack/
