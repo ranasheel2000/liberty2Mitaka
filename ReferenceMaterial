@@ -35,10 +35,14 @@ Note: reference for python : https://docs.python.org/3/
 Design Patterns:
 http://www.bogotobogo.com/DesignPatterns/introduction.php
 http://www.tutorialspoint.com/design_pattern/design_pattern_overview.htm
+
 Python Reference:
 http://www.bogotobogo.com/python/pytut.php
 http://www.dabeaz.com/
 https://www.youtube.com/watch?v=Z_OAlIhXziw
+
+Cinder Driver and supported features:
+https://wiki.openstack.org/wiki/CinderSupportMatrix
 
 https://github.com/openstack/cinder/blob/master/HACKING.rst
 http://docs.openstack.org/developer/hacking/
