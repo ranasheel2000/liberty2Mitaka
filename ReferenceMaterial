@@ -87,3 +87,10 @@ SHEEL action_Args={'project_id': u'f270b245cb11498ca4031deb7e141cfa', 'id': u'pr
 Future Targets
 
 1. https://review.openstack.org/#/c/263104/1
+
+starting services on devstack after reboot
+
+screen -c stack-screenrc
+ctrl+A crtl+D -> To detach from screen.
+
+
