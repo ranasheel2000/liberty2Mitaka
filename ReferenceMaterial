@@ -88,9 +88,15 @@ Future Targets
 
 1. https://review.openstack.org/#/c/263104/1
 
-starting services on devstack after reboot
+
+
+
+1. starting services on devstack after reboot
 
 screen -c stack-screenrc
 ctrl+A crtl+D -> To detach from screen.
 
+2. new install ubuntu settings for HP laptop:
+a. network adaptor : echo "options rtl8723be fwlps=0 swlps=0" | sudo tee /etc/modprobe.d/rtl8723be.conf
+                     reboot
 
