@@ -107,3 +107,11 @@ If you still have problems, you may need to add an option:
 echo "options rtl8723be ant_sel=2"  | sudo tee /etc/modprobe.d/rtl8723be.conf
 then reboot again.
 
+3. Ubuntu settings for HP laptop for video driver(skype video flickerring)
+
+cd /tmp
+wget https://01.org/sites/default/files/downloads/intelr-graphics-linux/sklgucver43.tar.bz2
+tar xf sklgucver43.tar.bz2
+cd skl_guc_ver4_3/ ; sudo ./install.sh
+sudo update-initramfs -u -k all
+
